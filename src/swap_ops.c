@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:07:05 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/13 21:20:41 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/15 22:32:05 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	swap(t_node **stack)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;

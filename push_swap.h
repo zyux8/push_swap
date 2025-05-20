@@ -6,13 +6,15 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:03:43 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/14 18:00:47 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/19 20:48:48 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #if !defined(PUSH_SWAP_H)
-#define PUSH_SWAP_H)
+#define PUSH_SWAP_H
 
+#include "libft/libft.h"
+#include "ft_printf/ft_printf.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -26,7 +28,10 @@ typedef struct s_node
 	struct s_node *next;
 } t_node;
 
-void	print_stack(t_node *stack);;
+//main.c Main structure of the program
+void	print_stack(t_node *stack);
+void	read_string(char *str, t_node **stack_a);
+int		main(int argc, char **argv);
 
 //swap_ops.c All functions for swapping
 void	swap_a(t_node **stack_a);
@@ -47,4 +52,21 @@ void	rev_rotate_a(t_node **stack_a);
 void	rev_rotate_b(t_node **stack_b);
 void	rev_rotate_ab(t_node **stack_a, t_node **stack_b);
 
-#endif // PUSH_SWAP_H)
+//list_helpers.c Functions to work with the List
+t_node	*create_node(void);
+void	add_node_back(t_node **stack, t_node *newnode);
+void	add_node_front(t_node **stack, t_node *newnode);
+int		count_nodes(t_node **stack);
+
+//utils.c Helping functions for general stuff
+int		assign_index(t_node **stack);
+int		check_double_num(t_node *stack_a);
+void	ft_exit(char *exit_msg);
+t_node	*init_first_node(char *value_str, t_node **stack_a);
+
+//radix.c Radix sorting functions
+int		is_sorted(t_node **stack);
+int		check_bit(t_node *node, int bit_index);
+int		radix_sort(t_node **stack_a, t_node **stack_b);
+
+#endif // PUSH_SWAP_H

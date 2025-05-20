@@ -6,20 +6,25 @@
 #    By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 16:51:35 by ohaker            #+#    #+#              #
-#    Updated: 2025/05/14 18:24:47 by ohaker           ###   ########.fr        #
+#    Updated: 2025/05/18 17:05:55 by ohaker           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-CFLAGS = -Wall -Wextra -Werror
 PRINTF_DIR = ft_printf
 PRINTF = $(PRINTF_DIR)/ftprintf.a
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+CFLAGS = -Wall -Wextra -Werror
 SRC = $(addprefix src/, \
+	list_helpers.c \
 	main.c \
 	push_ops.c \
+	radix.c \
 	rev_rotate_ops.c \
 	rotate_ops.c \
-	swap_ops.c)
+	swap_ops.c \
+	utils.c)
 	
 OBJ = $(SRC:.c=.o)
 	
@@ -35,7 +40,9 @@ all:	$(NAME)
 
 $(NAME): $(OBJ)
 	@echo "$(ORANGE)		- Compiling $(NAME)...$(NONE)"
-	@gcc $(CFLAGS) -o $(NAME)
+	@make -C libft --silent
+	@make -C ft_printf --silent
+	@gcc $(CFLAGS) -I$(LIBFT_DIR) -I$(PRINTF_DIR) $(OBJ) $(LIBFT) $(PRINTF) -o $(NAME)
 	@echo "$(GREEN)		- $(NAME) Compiled -$(NONE)"
 
 %.o: %.c
@@ -43,10 +50,14 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -rf $(OBJ)
+	@make clean -C libft
+	@make clean -C ft_printf
 	@echo "$(ORANGE)		- Deleted object files$(NONE)"
 
 fclean: clean
 	@rm -f $(NAME)
+	@make fclean -C libft
+	@make fclean -C ft_printf
 	@echo "$(ORANGE)		- Deleted $(NAME)$(NONE)"
 
 re: fclean all
@@ -65,4 +76,7 @@ mygit:
 		echo "$(GREEN)		- Pushed to git$(NONE)"; \
 	fi
 
-.PHONY: all clean fclean re mygit
+valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all ./push_swap "string" &> VALGRIND
+
+.PHONY: all clean fclean re mygit valgrind

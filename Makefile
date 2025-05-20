@@ -6,7 +6,7 @@
 #    By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 16:51:35 by ohaker            #+#    #+#              #
-#    Updated: 2025/05/18 17:05:55 by ohaker           ###   ########.fr        #
+#    Updated: 2025/05/20 19:12:46 by ohaker           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CFLAGS = -Wall -Wextra -Werror
 SRC = $(addprefix src/, \
+	checker_and_clean.c \
 	list_helpers.c \
 	main.c \
 	push_ops.c \

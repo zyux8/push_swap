@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:05:22 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/19 21:03:00 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/20 19:34:45 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,17 @@ void read_args(char **args, t_node **stack_a)
 		return ;
 	while (args[x])
 	{
+		printf("X: %d", x);
 		new_node = create_node();
 		if (!new_node)
+			return ;
+		if (ft_isdigit(ft_atoi(args[x])))
 			return ;
 		new_node->value = ft_atoi(args[x++]);
 		temp->next = new_node;
 		temp = temp->next;
 	}
 }
-
 
 int main(int argc, char **argv)
 {
@@ -85,13 +87,14 @@ int main(int argc, char **argv)
 		read_string(argv[1], &stack_a);
 	else
 		read_args(argv, &stack_a);
-	check_double_num(stack_a);
+	if (check_args(stack_a))
+		return (0);
 	assign_index(&stack_a);
-	// printf("Stack 1:\n");
-	// print_stack(stack_a);
+	printf("Stack 1:\n");
+	print_stack(stack_a);
 	if (!is_sorted(&stack_a))
 		radix_sort(&stack_a, &stack_b);
-	// printf("Stack 2:\n");
-	// print_stack(stack_a);
+	printf("Stack 2:\n");
+	print_stack(stack_a);
 	return (0);
 }

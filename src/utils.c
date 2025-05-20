@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 14:44:36 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/19 20:48:13 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/20 19:42:47 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,12 @@ int	assign_index(t_node **stack)
 	return (max);
 }
 
-int	check_double_num(t_node *stack_a)
-{
-	t_node *tier1;
-	t_node *tier2;
-
-	tier1 = stack_a;
-	while (tier1)
-	{
-		tier2 = tier1->next;
-		while (tier2)
-		{
-			// printf("Tier1: %d, Tier2: %d\n", tier1->value, tier2->value);
-			if (tier1->value == tier2->value)
-				ft_exit("409 Duplicate Number found!\n");
-			tier2 = tier2->next;
-		}
-		tier1 = tier1->next;
-	}
-	return (0);
-}
-
-void	ft_exit(char *exit_msg)
-{
-	ft_printf(exit_msg);
-	exit(0);
-}
-
 t_node	*init_first_node(char *value_str, t_node **stack_a)
 {
 	t_node *new_node;
 
+	if (!check_digits(value_str))
+		return (NULL);
 	new_node = create_node();
 	if (!new_node)
 		return (NULL);

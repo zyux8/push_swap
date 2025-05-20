@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:03:43 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/19 20:48:48 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/20 19:39:07 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,17 @@ int		count_nodes(t_node **stack);
 
 //utils.c Helping functions for general stuff
 int		assign_index(t_node **stack);
-int		check_double_num(t_node *stack_a);
-void	ft_exit(char *exit_msg);
 t_node	*init_first_node(char *value_str, t_node **stack_a);
 
 //radix.c Radix sorting functions
 int		is_sorted(t_node **stack);
 int		check_bit(t_node *node, int bit_index);
 int		radix_sort(t_node **stack_a, t_node **stack_b);
+
+//checker_and_clean.c Checks conditions of the arguments and also exits clean
+int		check_args(t_node *stack_a);
+int		check_digits(char *str);
+int		check_double_num(t_node *stack_a);
+void	ft_exit(char *exit_msg);
 
 #endif // PUSH_SWAP_H

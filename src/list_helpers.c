@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 20:08:26 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/17 18:18:48 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/21 20:28:31 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node *create_node(void)
 
 	newnode = malloc(sizeof(*newnode));
 	if (!newnode)
-		return (NULL);
+		ft_exit("Malloc failed\n", NULL, NULL, NULL);
 	newnode->value = 0;
 	newnode->index = -1;
 	newnode->next = NULL;

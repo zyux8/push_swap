@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:05:22 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/20 19:34:45 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/21 21:38:17 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,16 @@ void read_string(char *str, t_node **stack_a)
 	x = 0;
 	split = ft_split(str, ' ');
 	if (!split)
-		return ;
+		ft_exit("Malloc failed\n", stack_a, NULL, split);
 	temp = init_first_node(split[x++], stack_a);
 	if (!temp)
-		return (ft_free_split(split));
+		ft_exit("Initialization node failed\n", stack_a, NULL, NULL);
 	while (split[x])
 	{
+		check_digits(split[x]);
 		new = create_node();
 		if (!new)
-			return (ft_free_split(split));
+			ft_exit("Create node failed\n", stack_a, NULL, NULL);
 		new->value = ft_atoi(split[x++]);
 		temp->next = new;
 		temp = temp->next;
@@ -61,15 +62,15 @@ void read_args(char **args, t_node **stack_a)
 	x = 1;
 	temp = init_first_node(args[x++], stack_a);
 	if (!temp)
-		return ;
+		ft_exit("Initialization node failed\n", stack_a, NULL, NULL);
 	while (args[x])
 	{
 		printf("X: %d", x);
 		new_node = create_node();
 		if (!new_node)
-			return ;
+			ft_exit("Create node failed\n", stack_a, NULL, NULL);
 		if (ft_isdigit(ft_atoi(args[x])))
-			return ;
+			ft_exit("\n", stack_a, NULL, NULL);
 		new_node->value = ft_atoi(args[x++]);
 		temp->next = new_node;
 		temp = temp->next;
@@ -87,8 +88,7 @@ int main(int argc, char **argv)
 		read_string(argv[1], &stack_a);
 	else
 		read_args(argv, &stack_a);
-	if (check_args(stack_a))
-		return (0);
+	check_double_num(stack_a);
 	assign_index(&stack_a);
 	printf("Stack 1:\n");
 	print_stack(stack_a);

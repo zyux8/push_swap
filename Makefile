@@ -6,7 +6,7 @@
 #    By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/13 16:51:35 by ohaker            #+#    #+#              #
-#    Updated: 2025/05/20 19:12:46 by ohaker           ###   ########.fr        #
+#    Updated: 2025/05/22 20:05:43 by ohaker           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = $(addprefix src/, \
 	radix.c \
 	rev_rotate_ops.c \
 	rotate_ops.c \
+	sort_3-5.c \
 	swap_ops.c \
 	utils.c)
 	
@@ -80,4 +81,7 @@ mygit:
 valgrind:
 	valgrind --leak-check=full --show-leak-kinds=all ./push_swap "string" &> VALGRIND
 
-.PHONY: all clean fclean re mygit valgrind
+format:
+	PATH="$$HOME/.local/bin:$$PATH" find ./ -type f -name "*.[ch]"  -exec c_formatter_42 {} \;
+
+.PHONY: all clean fclean re mygit valgrind format

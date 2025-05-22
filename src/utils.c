@@ -43,7 +43,7 @@ int	assign_index(t_node **stack)
 
 t_node	*init_first_node(char *value_str, t_node **stack_a)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	if (check_digits(value_str))
 		ft_exit("Error: ", stack_a, NULL, NULL);

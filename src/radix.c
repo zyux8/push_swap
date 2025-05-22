@@ -6,26 +6,28 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 18:38:20 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/20 16:40:25 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/22 20:40:39 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int check_bit(t_node *node, int bit_index)
+int	check_bit(t_node *node, int bit_index)
 {
 	if (!node)
 		return (0);
 	return (node->index >> bit_index & 1);
 }
 
-int sort_bit(t_node **stack_a, t_node **stack_b, int bit_index)
+int	sort_bit(t_node **stack_a, t_node **stack_b, int bit_index)
 {
-	int x;
-	int size;
+	int	x;
+	int	size;
+	// int temp_size;
 
 	x = 0;
 	size = count_nodes(stack_a);
+	// temp_size = size;
 	while (x < size)
 	{
 		if (!check_bit(*stack_a, bit_index))
@@ -39,10 +41,10 @@ int sort_bit(t_node **stack_a, t_node **stack_b, int bit_index)
 	return (0);
 }
 
-int count_bits(t_node *stack)
+int	count_bits(t_node *stack)
 {
-	int bits;
-	int max;
+	int	bits;
+	int	max;
 
 	bits = 0;
 	max = 8;
@@ -57,10 +59,10 @@ int count_bits(t_node *stack)
 	return (bits);
 }
 
-int is_sorted(t_node **stack)
+int	is_sorted(t_node **stack)
 {
-	int x;
-	t_node *temp;
+	int		x;
+	t_node	*temp;
 
 	x = 0;
 	temp = *stack;
@@ -74,18 +76,18 @@ int is_sorted(t_node **stack)
 	return (0);
 }
 
-int radix_sort(t_node **stack_a, t_node **stack_b)
+int	radix_sort(t_node **stack_a, t_node **stack_b)
 {
-	int bit_max;
-	int bit_index;
+	int	bit_max;
+	int	bit_index;
 
 	bit_max = count_bits(*stack_a);
 	bit_index = 0;
 	while (bit_index < bit_max)
 	{
-		sort_bit(stack_a, stack_b, bit_index);
 		if (is_sorted(stack_a))
 			break ;
+		sort_bit(stack_a, stack_b, bit_index);
 		bit_index++;
 	}
 	return (0);

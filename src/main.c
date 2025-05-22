@@ -26,7 +26,7 @@ void	print_stack(t_node *stack)
 	}
 }
 
-void read_string(char *str, t_node **stack_a)
+void	read_string(char *str, t_node **stack_a)
 {
 	int		x;
 	char	**split;
@@ -53,7 +53,7 @@ void read_string(char *str, t_node **stack_a)
 	ft_free_split(split);
 }
 
-void read_args(char **args, t_node **stack_a)
+void	read_args(char **args, t_node **stack_a)
 {
 	int		x;
 	t_node	*temp;
@@ -77,11 +77,13 @@ void read_args(char **args, t_node **stack_a)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_node *stack_a = NULL;
-	t_node *stack_b = NULL;
+	t_node	*stack_a;
+	t_node	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc < 2)
 		return (0);
 	else if (argc == 2)

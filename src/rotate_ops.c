@@ -14,8 +14,8 @@
 
 void	rotate(t_node **stack)
 {
-	t_node *first;
-	t_node *last;
+	t_node	*first;
+	t_node	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;

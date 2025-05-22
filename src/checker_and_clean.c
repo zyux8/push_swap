@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*	                                                                        */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   checker_and_clean.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 16:42:35 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/21 20:39:48 by ohaker           ###   ########.fr       */
+/*   Created: 2025/05/22 19:44:53 by ohaker            #+#    #+#             */
+/*   Updated: 2025/05/22 19:45:00 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int check_digits(char *str)
+int	check_digits(char *str)
 {
 	while (*str)
 	{
@@ -27,9 +27,9 @@ int check_digits(char *str)
 
 int	check_double_num(t_node *stack_a)
 {
-	t_node *tier1;
-	t_node *tier2;
-	
+	t_node	*tier1;
+	t_node	*tier2;
+
 	tier1 = stack_a;
 	while (tier1)
 	{
@@ -47,16 +47,18 @@ int	check_double_num(t_node *stack_a)
 
 void	free_stack(t_node **stack)
 {
-    t_node *tmp;
-    while (*stack)
-    {
-        tmp = (*stack)->next;
-        free(*stack);
-        *stack = tmp;
-    }
+	t_node	*tmp;
+
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
 }
 
-void	ft_exit(char *exit_msg, t_node **stack_a, t_node **stack_b, char **split)
+void	ft_exit(char *exit_msg, t_node **stack_a, t_node **stack_b,
+		char **split)
 {
 	ft_printf("%s", exit_msg);
 	if (stack_a && *stack_a)

@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:05:22 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/21 21:38:17 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/23 22:41:01 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,11 @@ void	read_args(char **args, t_node **stack_a)
 		ft_exit("Initialization node failed\n", stack_a, NULL, NULL);
 	while (args[x])
 	{
-		printf("X: %d", x);
 		new_node = create_node();
 		if (!new_node)
 			ft_exit("Create node failed\n", stack_a, NULL, NULL);
 		if (ft_isdigit(ft_atoi(args[x])))
-			ft_exit("\n", stack_a, NULL, NULL);
+			ft_exit("Fuck u!\n", stack_a, NULL, NULL);
 		new_node->value = ft_atoi(args[x++]);
 		temp->next = new_node;
 		temp = temp->next;
@@ -92,11 +91,11 @@ int	main(int argc, char **argv)
 		read_args(argv, &stack_a);
 	check_double_num(stack_a);
 	assign_index(&stack_a);
-	printf("Stack 1:\n");
-	print_stack(stack_a);
+	// printf("Stack 1:\n");
+	// print_stack(stack_a);
 	if (!is_sorted(&stack_a))
 		radix_sort(&stack_a, &stack_b);
-	printf("Stack 2:\n");
-	print_stack(stack_a);
+	// printf("Stack 2:\n");
+	// print_stack(stack_a);
 	return (0);
 }

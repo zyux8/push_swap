@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 18:38:20 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/22 20:40:39 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/23 22:08:48 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@ int	sort_bit(t_node **stack_a, t_node **stack_b, int bit_index)
 {
 	int	x;
 	int	size;
-	// int temp_size;
 
 	x = 0;
 	size = count_nodes(stack_a);
-	// temp_size = size;
 	while (x < size)
 	{
 		if (!check_bit(*stack_a, bit_index))
@@ -71,7 +69,10 @@ int	is_sorted(t_node **stack)
 		if (temp->index != x)
 			return (0);
 		x++;
-		temp = temp->next;
+		if (temp->next)
+			temp = temp->next;
+		else
+			return (1);
 	}
 	return (0);
 }
@@ -80,9 +81,21 @@ int	radix_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	bit_max;
 	int	bit_index;
+	int size;
 
 	bit_max = count_bits(*stack_a);
 	bit_index = 0;
+	size = count_nodes(stack_a);
+	if (size <= 5)
+	{
+		if (size == 2)
+			sort_two(stack_a);
+		else if (size == 3)
+			sort_three(stack_a);
+		else
+			sort_five(stack_a, stack_b);
+		return (0);
+	}
 	while (bit_index < bit_max)
 	{
 		if (is_sorted(stack_a))

@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 20:08:26 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/22 20:44:28 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/23 16:41:13 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,20 @@ int	count_nodes(t_node **stack)
 		temp = temp->next;
 	}
 	return (x);
+}
+
+t_node *find_biggest(t_node *stack_a)
+{
+	t_node *biggest;
+	
+	if (!stack_a)
+		return (NULL);
+	biggest = stack_a;
+	while (stack_a)
+	{
+		if (stack_a->index > biggest->index)
+			biggest = stack_a;
+		stack_a = stack_a->next;
+	}
+	return (biggest);
 }

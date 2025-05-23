@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:03:43 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/21 20:27:32 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/23 22:09:40 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,8 @@ void				rev_rotate_ab(t_node **stack_a, t_node **stack_b);
 
 // list_helpers.c Functions to work with the List
 t_node				*create_node(void);
-void				add_node_back(t_node **stack, t_node *newnode);
-void				add_node_front(t_node **stack, t_node *newnode);
 int					count_nodes(t_node **stack);
+t_node				*find_biggest(t_node *stack_a);
 
 // utils.c Helping functions for general stuff
 int					assign_index(t_node **stack);
@@ -68,10 +67,14 @@ int					check_bit(t_node *node, int bit_index);
 int					radix_sort(t_node **stack_a, t_node **stack_b);
 
 // checker_and_clean.c Checks conditions of the arguments and also exits clean
-// int		check_args(t_node *stack_a);
 int					check_digits(char *str);
 int					check_double_num(t_node *stack_a);
 void				ft_exit(char *exit_msg, t_node **stack_a, t_node **stack_b,
 						char **split);
+
+//sort_3-5.c Functions to sort 3 and 5 numbers
+void				sort_two(t_node **stack_a);
+void				sort_three(t_node **stack_a);
+void				sort_five(t_node **stack_a, t_node **stack_b);
 
 #endif // PUSH_SWAP_H

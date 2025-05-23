@@ -1,55 +1,40 @@
-==23184== Memcheck, a memory error detector
-==23184== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==23184== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==23184== Command: ./push_swap 6\ 3\ 8\ 5\ 1\ 9\ 2\ 7\ 0\ 4
-==23184== 
-Entry 6: 6
-Entry 3: 3
-Entry 8: 8
-Entry 5: 5
-Entry 1: 1
-Entry 9: 9
-Entry 2: 2
-Entry 7: 7
-Entry 0: 0
-Entry 4: 4
-404 Stack not found
-Entry 6: 6
-Entry 3: 3
-Entry 8: 8
-Entry 5: 5
-Entry 1: 1
-Entry 9: 9
-Entry 2: 2
-Entry 7: 7
-Entry 0: 0
-Entry 4: 4
-Nodes: 10
-First Print:
-Print A:
-==23184== 
-==23184== HEAP SUMMARY:
-==23184==     in use at exit: 160 bytes in 10 blocks
-==23184==   total heap usage: 22 allocs, 12 frees, 4,364 bytes allocated
-==23184== 
-==23184== 144 bytes in 9 blocks are indirectly lost in loss record 1 of 2
-==23184==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==23184==    by 0x10921E: create_node (in /home/ohaker/42/push_swap/push_swap)
-==23184==    by 0x109472: read_input (in /home/ohaker/42/push_swap/push_swap)
-==23184==    by 0x109543: main (in /home/ohaker/42/push_swap/push_swap)
-==23184== 
-==23184== 160 (16 direct, 144 indirect) bytes in 1 blocks are definitely lost in loss record 2 of 2
-==23184==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==23184==    by 0x10921E: create_node (in /home/ohaker/42/push_swap/push_swap)
-==23184==    by 0x1093CB: read_input (in /home/ohaker/42/push_swap/push_swap)
-==23184==    by 0x109543: main (in /home/ohaker/42/push_swap/push_swap)
-==23184== 
-==23184== LEAK SUMMARY:
-==23184==    definitely lost: 16 bytes in 1 blocks
-==23184==    indirectly lost: 144 bytes in 9 blocks
-==23184==      possibly lost: 0 bytes in 0 blocks
-==23184==    still reachable: 0 bytes in 0 blocks
-==23184==         suppressed: 0 bytes in 0 blocks
-==23184== 
-==23184== For lists of detected and suppressed errors, rerun with: -s
-==23184== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==158039== Memcheck, a memory error detector
+==158039== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==158039== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==158039== Command: ./push_swap 8 3 2
+==158039== 
+sa
+rra
+==158039== 
+==158039== HEAP SUMMARY:
+==158039==     in use at exit: 48 bytes in 3 blocks
+==158039==   total heap usage: 3 allocs, 0 frees, 48 bytes allocated
+==158039== 
+==158039== 16 bytes in 1 blocks are indirectly lost in loss record 1 of 3
+==158039==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==158039==    by 0x109371: create_node (in /home/ohaker/Projects/push_swap/push_swap)
+==158039==    by 0x10A262: init_first_node (in /home/ohaker/Projects/push_swap/push_swap)
+==158039==    by 0x10967B: read_args (in /home/ohaker/Projects/push_swap/push_swap)
+==158039==    by 0x1097FB: main (in /home/ohaker/Projects/push_swap/push_swap)
+==158039== 
+==158039== 16 bytes in 1 blocks are indirectly lost in loss record 2 of 3
+==158039==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==158039==    by 0x109371: create_node (in /home/ohaker/Projects/push_swap/push_swap)
+==158039==    by 0x1096B1: read_args (in /home/ohaker/Projects/push_swap/push_swap)
+==158039==    by 0x1097FB: main (in /home/ohaker/Projects/push_swap/push_swap)
+==158039== 
+==158039== 48 (16 direct, 32 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
+==158039==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==158039==    by 0x109371: create_node (in /home/ohaker/Projects/push_swap/push_swap)
+==158039==    by 0x1096B1: read_args (in /home/ohaker/Projects/push_swap/push_swap)
+==158039==    by 0x1097FB: main (in /home/ohaker/Projects/push_swap/push_swap)
+==158039== 
+==158039== LEAK SUMMARY:
+==158039==    definitely lost: 16 bytes in 1 blocks
+==158039==    indirectly lost: 32 bytes in 2 blocks
+==158039==      possibly lost: 0 bytes in 0 blocks
+==158039==    still reachable: 0 bytes in 0 blocks
+==158039==         suppressed: 0 bytes in 0 blocks
+==158039== 
+==158039== For lists of detected and suppressed errors, rerun with: -s
+==158039== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

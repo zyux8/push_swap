@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 19:44:53 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/22 19:45:00 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/24 19:43:06 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	check_digits(char *str)
 	while (*str)
 	{
 		if (!ft_isdigit(*str) && *str != '-' && *str != '+')
-			ft_exit("422 Non digit detected!\n", NULL, NULL, NULL);
+			return (-1);
 		str++;
 	}
-	if (ft_atoi(str) > INT_MAX || ft_atoi(str) < INT_MIN)
-		ft_exit("422 Number out of range!\n", NULL, NULL, NULL);
+	if (ft_atol(str) > INT_MAX || ft_atol(str) < INT_MIN)
+		return (-1);
 	return (0);
 }
 

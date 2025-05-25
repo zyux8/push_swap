@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 14:44:36 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/24 19:16:22 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/24 20:24:14 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ t_node	*init_first_node(char *value_str, t_node **stack_a)
 {
 	t_node	*new_node;
 
-	// if (check_digits(value_str))
-	// 	ft_exit("Error: ", stack_a, NULL, NULL);
 	new_node = create_node();
 	if (!new_node)
-		ft_exit("Malloc failed\n", stack_a, NULL, NULL);
+		ft_exit("Error\n", stack_a, NULL, NULL);
 	new_node->value = ft_atoi(value_str);
 	*stack_a = new_node;
 	return (new_node);

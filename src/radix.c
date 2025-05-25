@@ -6,7 +6,7 @@
 /*   By: ohaker <ohaker@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 18:38:20 by ohaker            #+#    #+#             */
-/*   Updated: 2025/05/23 22:08:48 by ohaker           ###   ########.fr       */
+/*   Updated: 2025/05/24 22:26:44 by ohaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	radix_sort(t_node **stack_a, t_node **stack_b)
 	bit_max = count_bits(*stack_a);
 	bit_index = 0;
 	size = count_nodes(stack_a);
-	if (size <= 5)
+	if (size <= 5 && !is_sorted(stack_a))
 	{
 		if (size == 2)
 			sort_two(stack_a);
